@@ -6,6 +6,7 @@ const App = () => {
   const [textInput, setTextInput] = useState('')
   const [responses, setResponses] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
@@ -21,6 +22,10 @@ const App = () => {
       presence_penalty: 0.0
     }
     PostSubmission(dataToSend)
+  }
+
+  const clearInput = () => {
+    setTextInput('')
   }
 
   const PostSubmission = async (dataToSend) => {
@@ -44,11 +49,15 @@ const App = () => {
           response: data.choices[0].text
         }
         setResponses((prev) => [newEntry, ...prev])
+        clearInput()
       } else {
-        console.log(response)
-        throw new Error(response.message)
+        setErrorMsg('Something went wrong, please try again later')
+        throw new Error(response.status)
       }
-    } catch (error) {}
+    } catch (error) {
+      setErrorMsg('Something went wrong, please try again later')
+      throw new Error(error.message)
+    }
   }
 
   return (
@@ -79,7 +88,9 @@ const App = () => {
         {responses && responses[0] ? (
           <Stories responses={responses} />
         ) : (
-          <h2 style={{ fontSize: '1.3rem' }}>No responses yet, tell your story!</h2>
+          <h2 style={{ fontSize: '1.3rem' }}>
+            {!errorMsg ? 'No responses yet, tell your story!' : errorMsg}
+          </h2>
         )}
       </section>
     </div>
