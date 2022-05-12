@@ -1,5 +1,5 @@
-import React from 'react'
 import Card from './Card'
+import './Stories.css'
 
 const Stories = ({ responses }) => {
   let cards
@@ -16,7 +16,7 @@ const Stories = ({ responses }) => {
     })
   }
 
-  return <section style={{ width: '60vw' }}>{cards}</section>
+  return <section className='stories'>{cards}</section>
 }
 
 export default Stories

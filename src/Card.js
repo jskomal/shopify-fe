@@ -1,10 +1,10 @@
-import React from 'react'
+import './Card.css'
 
 const Card = ({ id, input, response }) => {
   return (
     <article className='card'>
-      <h3 className='prompt'>prompt: {input}</h3>
-      <h3 className='response'>response: {response}</h3>
+      <h3 className='prompt'>{input}</h3>
+      <h3 className='response'>{response}</h3>
     </article>
   )
 }
