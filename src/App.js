@@ -16,7 +16,7 @@ const App = () => {
     const dataToSend = {
       prompt: textInput,
       temperature: 0.5,
-      max_tokens: 128,
+      max_tokens: 256,
       frequency_penalty: 0.0,
       presence_penalty: 0.0
     }
