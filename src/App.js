@@ -1,9 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import Stories from './Stories'
 
 const App = () => {
   const [textInput, setTextInput] = useState('')
   const [responses, setResponses] = useState([])
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
@@ -15,19 +17,38 @@ const App = () => {
       prompt: textInput,
       temperature: 0.5,
       max_tokens: 128,
-      top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0
     }
+    PostSubmission(dataToSend)
+  }
 
-    fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-      },
-      body: JSON.stringify(dataToSend)
-    })
+  const PostSubmission = async (dataToSend) => {
+    try {
+      const response = await fetch(
+        'https://api.openai.com/v1/engines/text-curie-001/completions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.REACT_APP_APIKEY}`
+          },
+          body: JSON.stringify(dataToSend)
+        }
+      )
+      if (response.ok) {
+        const data = await response.json()
+        const newEntry = {
+          id: Date.now(),
+          input: dataToSend.prompt,
+          response: data.choices[0].text
+        }
+        setResponses((prev) => [newEntry, ...prev])
+      } else {
+        console.log(response)
+        throw new Error(response.message)
+      }
+    } catch (error) {}
   }
 
   return (
@@ -47,17 +68,19 @@ const App = () => {
             onChange={handleTextInput}
             placeholder='Tell me a story about the skateboarding king sent back in time to the stone age'
           ></textarea>
-          <button className='submit-button form-item' onClick={handleSubmit}>
+          <button
+            disabled={!textInput}
+            className='submit-button form-item'
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </form>
-        <section className='responses'>
-          {responses && responses[0] ? (
-            { responses }
-          ) : (
-            <h2 style={{ fontSize: '1.3rem' }}>No responses yet, ask for an adventure</h2>
-          )}
-        </section>
+        {responses && responses[0] ? (
+          <Stories responses={responses} />
+        ) : (
+          <h2 style={{ fontSize: '1.3rem' }}>No responses yet, tell your story!</h2>
+        )}
       </section>
     </div>
   )
