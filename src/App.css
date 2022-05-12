@@ -44,3 +44,32 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+#root {
+  --main-bg: #faf7ed;
+  --accent-green: #008060;
+  --text-basic: black;
+  --text-green: #004c3e;
+  --logo-green: #95bf46;
+  --logo-green-dark: #5e8e3d;
+}
+
+.main-title {
+  padding: 0.5rem;
+  color: var(--text-green);
+  border: 2px solid var(--accent-green);
+  border-radius: 0.3rem;
+  text-align: center;
+  width: 60vw;
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+.App {
+  background-color: var(--main-bg);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
