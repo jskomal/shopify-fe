@@ -39,6 +39,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  font-weight: 400;
 }
 #root,
 #__next {
@@ -52,24 +53,50 @@ h6 {
   --text-green: #004c3e;
   --logo-green: #95bf46;
   --logo-green-dark: #5e8e3d;
-}
-
-.main-title {
-  padding: 0.5rem;
-  color: var(--text-green);
-  border: 2px solid var(--accent-green);
-  border-radius: 0.3rem;
-  text-align: center;
-  width: 60vw;
-  margin-top: 1rem;
-  font-weight: 400;
+  --accent-grey: #e8e9eb;
 }
 
 .App {
-  background-color: var(--main-bg);
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.main-view {
+  background-color: var(--main-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  height: 100%;
+}
+
+.main-title {
+  padding: 1rem;
+  color: var(--main-bg);
+  text-align: center;
+  background-color: var(--text-green);
+  width: 70vw;
+  font-size: 2rem;
+}
+
+form {
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 2px solid var(--accent-green);
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.form-item {
+  margin-top: 1rem;
+}
+
+textarea {
+  resize: vertical;
 }
