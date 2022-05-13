@@ -23,4 +23,5 @@
   align-self: flex-end;
   right: 1vw;
   margin-top: 0.5rem;
+  cursor: pointer;
 }
