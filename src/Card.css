@@ -6,8 +6,20 @@
   margin-bottom: 1rem;
   background-color: var(--accent-grey);
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .prompt {
   font-weight: 800;
+}
+
+.delete-button {
+  position: relative;
+  color: var(--main-bg);
+  background-color: var(--text-green);
+  border: 1px solid var(--accent-green);
+  border-radius: 0.3rem;
+  align-self: flex-end;
+  right: 1vw;
 }
