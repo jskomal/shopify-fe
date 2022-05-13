@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Stories from './Stories'
 import PulseLoader from 'react-spinners/PulseLoader'
 
@@ -8,6 +8,28 @@ const App = () => {
   const [responses, setResponses] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const isFirstLoad = useRef(true)
+
+  useEffect(() => {
+    if (responses && !responses[0] && isFirstLoad.current) {
+      isFirstLoad.current = false
+      setResponses(() => {
+        console.log('attempting to get local storage')
+        const stories = JSON.parse(localStorage.getItem('stories'))
+        if (!stories) {
+          console.log('nothing in local storage')
+          return []
+        } else {
+          console.log('retrived')
+          return stories
+        }
+      })
+    }
+    if (responses && responses.length > 0 && !isFirstLoad.current) {
+      localStorage.setItem('stories', JSON.stringify(responses))
+      console.log('set local storage')
+    }
+  }, [responses])
 
   const handleTextInput = (e) => {
     setTextInput(e.target.value)
