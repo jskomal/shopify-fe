@@ -1,6 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import Stories from './Stories'
+import PulseLoader from 'react-spinners/PulseLoader'
 
 const App = () => {
   const [textInput, setTextInput] = useState('')
@@ -30,6 +31,7 @@ const App = () => {
 
   const PostSubmission = async (dataToSend) => {
     try {
+      setIsLoading(true)
       const response = await fetch(
         'https://api.openai.com/v1/engines/text-curie-001/completions',
         {
@@ -50,11 +52,14 @@ const App = () => {
         }
         setResponses((prev) => [newEntry, ...prev])
         clearInput()
+        setIsLoading(false)
       } else {
+        setIsLoading(false)
         setErrorMsg('Something went wrong, please try again later')
         throw new Error(response.status)
       }
     } catch (error) {
+      setIsLoading(false)
       setErrorMsg('Something went wrong, please try again later')
       throw new Error(error.message)
     }
@@ -62,6 +67,11 @@ const App = () => {
 
   return (
     <div className='App'>
+      {isLoading && (
+        <div className='loading-view'>
+          <PulseLoader className='spinner' color={'#004c3e'} size={'2vw'} />
+        </div>
+      )}
       <section className='main-view'>
         <h1 className='main-title'>where will your next adventure take you?</h1>
         <form>
