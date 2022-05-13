@@ -85,14 +85,7 @@ const App = () => {
 
   const handleDelete = (e) => {
     e.preventDefault()
-    console.log(e.target.id)
-    setResponses((prev) =>
-      prev.filter((card) => {
-        console.log('card id', card.id)
-        console.log('e target id', e.target.id)
-        return card.id != e.target.id
-      })
-    )
+    setResponses((prev) => prev.filter((card) => card.id != e.target.id))
   }
 
   return (
