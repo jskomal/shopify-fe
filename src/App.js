@@ -11,23 +11,19 @@ const App = () => {
   const isFirstLoad = useRef(true)
 
   useEffect(() => {
+    if (responses && !isFirstLoad.current) {
+      localStorage.setItem('stories', JSON.stringify(responses))
+    }
     if (responses && !responses[0] && isFirstLoad.current) {
       isFirstLoad.current = false
       setResponses(() => {
-        console.log('attempting to get local storage')
         const stories = JSON.parse(localStorage.getItem('stories'))
         if (!stories) {
-          console.log('nothing in local storage')
           return []
         } else {
-          console.log('retrived')
           return stories
         }
       })
-    }
-    if (responses && responses.length > 0 && !isFirstLoad.current) {
-      localStorage.setItem('stories', JSON.stringify(responses))
-      console.log('set local storage')
     }
   }, [responses])
 
@@ -87,6 +83,18 @@ const App = () => {
     }
   }
 
+  const handleDelete = (e) => {
+    e.preventDefault()
+    console.log(e.target.id)
+    setResponses((prev) =>
+      prev.filter((card) => {
+        console.log('card id', card.id)
+        console.log('e target id', e.target.id)
+        return card.id != e.target.id
+      })
+    )
+  }
+
   return (
     <div className='App'>
       {isLoading && (
@@ -117,7 +125,7 @@ const App = () => {
           </button>
         </form>
         {responses && responses[0] ? (
-          <Stories responses={responses} />
+          <Stories handleDelete={handleDelete} responses={responses} />
         ) : (
           <h2 style={{ fontSize: '1.3rem' }}>
             {!errorMsg ? 'No responses yet, tell your story!' : errorMsg}
