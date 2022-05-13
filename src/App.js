@@ -71,7 +71,6 @@ const App = () => {
           <textarea
             className='form-item'
             name='form-input'
-            cols='75'
             rows='2'
             value={textInput}
             onChange={handleTextInput}
