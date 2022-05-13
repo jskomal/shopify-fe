@@ -85,7 +85,9 @@ const App = () => {
 
   const handleDelete = (e) => {
     e.preventDefault()
-    setResponses((prev) => prev.filter((card) => card.id != e.target.id))
+    setResponses((prev) =>
+      prev.filter((card) => parseInt(card.id) !== parseInt(e.target.id))
+    )
   }
 
   return (
