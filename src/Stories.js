@@ -1,7 +1,7 @@
 import Card from './Card'
 import './Stories.css'
 
-const Stories = ({ responses }) => {
+const Stories = ({ responses, handleDelete }) => {
   let cards
   if (responses && responses[0]) {
     cards = responses.map((story) => {
@@ -11,6 +11,7 @@ const Stories = ({ responses }) => {
           id={story.id}
           input={story.input}
           response={story.response}
+          handleDelete={handleDelete}
         />
       )
     })
