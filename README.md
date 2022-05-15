@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Shopify FE Intern Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Where will your next adventure take you?
 
-## Available Scripts
+##### Created by:
 
-In the project directory, you can run:
+Jordan Skomal | [GitHub](https://github.com/jskomal)
 
-### `npm start`
+### Deploy Link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Check out the deployed site [here](https://jskomal-shopify.herokuapp.com/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+This app was built in React using `create-react-app`. Let your creativity shine, and spark new ideas for stories by prompting the app with a custom story setting or idea and let the OpenAi present a foundation for your idea!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Styled using colors from Shopify's front page, with design inspiration drawn from the same source.
 
-### `npm run build`
+Focused on Error Handling and managed the four possible app states:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+1. empty state (page load)
+2. loading state 
+3. data state (all populated)
+4. error state (any possible error)
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Stretch goals included:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Improved design, UX
+2. Implemented local storage to store previous responses
+3. Implemented deletion to allow the user to remove unwanted prompts
 
-### `npm run eject`
+## Technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Javascript
+- React
+- HTML
+- CSS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Goals
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project is part of an application for Shopify's Frontend Developer Internship. It's goal is to show basic understanding of Web Development and the possible pathways to creating a functional web app.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Site Examples
 
-## Learn More
+![image](https://user-images.githubusercontent.com/90876852/168488938-5ba956bb-0945-49fb-910f-47960e31d1db.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![shopify](https://user-images.githubusercontent.com/90876852/168489175-4c2bc10f-51a8-4274-9450-f154e36316a6.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Install and Setup
 
-### Code Splitting
+To run this app locally:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Run `git clone git@github.com:jskomal/shopify-fe.git` in your command line
+2. Run `cd shopify-fe` to navigate into the repository
+3. Run `npm install`
+4. Run `npm start`
+5. Get an API Key from OpenAI following these instructions:
 
-### Analyzing the Bundle Size
+```
+OpenAI sign up instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Go to https://beta.openai.com/signup
+Enter your email address and password
+Verify your email address
+Verify your phone number by entering the code that is sent to you via SMS
+Once logged in, go to https://beta.openai.com/account/api-keys to get your secret API key
+```
 
-### Making a Progressive Web App
+6. Place your API key in a `.env` file inside the root of the application in the following format:
+`REACT_APP_APIKEY = '[YOUR API KEY HERE]'` 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Alternatively, visit the deployment link above!
