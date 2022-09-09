@@ -1,5 +1,7 @@
 # Shopify FE Intern Challenge
 
+DEPRECATED - Will not be moved off of Heroku
+
 ## Where will your next adventure take you?
 
 ##### Created by:
